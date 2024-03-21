@@ -1,16 +1,12 @@
-const express = require("express");
-const app = express();
+const app = require("./src/Services");
+const dbConnection = require("./Mongo/MongoConnection");
 const port = 3001;
 
 //password 56Q3oYCvbkQTBn2Y
 // username singh80020
-// link mongodb+srv://singh80020:<password>@my-lappy.p4sxzae.mongodb.net/
-
-app.get("/", (req, res) => {
-  console.log(req);
-  res.send("Hello World!");
-});
+// link mongodb+srv://singh80020:56Q3oYCvbkQTBn2Y@my-lappy.p4sxzae.mongodb.net/
 
 app.listen(port, async () => {
-  console.log(`Example app listening on port ${port}`, process.env.DATA);
+  await dbConnection();
+  console.log(` app listening on port ${port}`);
 });
